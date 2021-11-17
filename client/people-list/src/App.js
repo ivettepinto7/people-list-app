@@ -92,7 +92,8 @@ function App() {
         </Card>
       </Container>
       <Container>
-        {people.map(({ _id, name }) => (
+        {people &&
+        people.map(({ _id, name }) => (
           <Card>
             <CardContent className="card-content" style={{ padding: "16px" }}>
               <Typography
