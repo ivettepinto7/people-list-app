@@ -5,7 +5,7 @@ import { Add } from '@material-ui/icons';
 function App() {
   const [inputName, setInputName] = useState("");
   const [people, setPeople] = useState([]);
-  
+
   const fetchPeople = async () => {
     const url = `${process.env.REACT_APP_API_URL}/people/get`;
 
@@ -50,7 +50,7 @@ function App() {
       console.error(error);
     }
   };
-  
+
   return (
     <div>
       <Container maxWidth="sm">
@@ -75,24 +75,43 @@ function App() {
           </FormControl>
         </form>
       </Container>
-      { people && 
-        people.map(({ _id, name }) => (
-          <Card>
-            <CardContent className="card-content" style={{ padding: "16px" }}>
-              <Typography
-                variant="h5"
-                component="h2"
-              >
-                <Grid conatiner alignItems="center" justify="flex-start">
-                  <Grid item style={{ flex: 2 }}>
-                    <Typography variant="h4">{name}</Typography>
+      <Container>
+            <Card>
+              <CardContent className="card-content" style={{ padding: "16px" }}>
+                <Typography
+                  variant="h5"
+                  component="h2"
+                >
+                  <Grid conatiner alignItems="center" justify="flex-start">
+                    <Grid item style={{ flex: 2 }}>
+                      <Typography variant="h4">Hola</Typography>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-    </div>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Container>
+      {people &&
+        people.map(({ _id, name }) => (
+          <Container>
+            <Card>
+              <CardContent className="card-content" style={{ padding: "16px" }}>
+                <Typography
+                  variant="h5"
+                  component="h2"
+                >
+                  <Grid conatiner alignItems="center" justify="flex-start">
+                    <Grid item style={{ flex: 2 }}>
+                      <Typography variant="h4">{name}</Typography>
+                    </Grid>
+                  </Grid>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Container>
+        ))
+      }
+    </div >
   );
 }
 
