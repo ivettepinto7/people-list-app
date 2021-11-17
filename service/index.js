@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use('/', peopleRoutes);
 
-mongoose.connect('mongodb://localhost/people-list',{
+mongoose.connect('mongodb://carolina:Z2dscAy2fpzjcBaH@localhost:27017/people-list?authSource=admin',{
     useNewUrlParser: true
 },
     (err, res) => {
