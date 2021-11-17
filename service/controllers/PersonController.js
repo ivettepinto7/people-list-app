@@ -9,9 +9,17 @@ var PersonController = {
             
             await person.save();
 
-            return res.status(201).json({error: false, message: "Person added"});
+            return res.json({
+                status: "success",
+                data: person,
+                message: "Person added"});
         } catch (err) {
-            return res.status(400).json(err.details != null ? err.details[0].message : err);
+            console.error(err);
+            return res.json({
+                status: "error",
+                data: null,
+                message: err
+            });
         }
     },
     updatePerson: async (req, res) => {
@@ -20,17 +28,34 @@ var PersonController = {
             const newPerson = {name};
             
             await Person.findByIdAndUpdate(req.params.id, newPerson);
-            return res.status(200).json({error: false, message: "Person updated"});
+            return res.json({
+                status: "success",
+                data: newPerson,
+                message: "Person updated"});
         } catch (err) {
-            return res.status(400).json(err.details != null ? err.details[0].message : err);
+            console.error(err);
+            return res.json({
+                status: "error",
+                data: null,
+                message: err
+            });
         }
     },
     deletePerson: async (req, res) => {
         try {
-            await Person.findByIdAndRemove(req.params.id);
-            return res.status(200).json({ error: false, message: "Person deletede"});
+            const deletedPerson = await Person.findByIdAndRemove(req.params.id);
+            return res.json({
+                status: "success",
+                data: deletedPerson,
+                message: "Person deletede"
+            });
         } catch (err) {
-            return res.status(400).json(err.details != null ? err.details[0].message : err);
+            console.error(err);
+            return res.json({
+                status: "error",
+                data: null,
+                message: err
+            });
         }
     },
     getAllPeople: async (req, res) => {
