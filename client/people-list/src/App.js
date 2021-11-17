@@ -13,6 +13,7 @@ function App() {
       const res = await fetch(url);
       const obj = await res.json();
       const results = obj.data;
+      console.log(results);
       setPeople(results);
     } catch (error) {
       console.error(error);
@@ -40,7 +41,7 @@ function App() {
     try {
       const res = await fetch(url, conf);
       const obj = await res.json();
-
+      console.log(obj);
       if (obj.status === "success") {
         await fetchPeople();
         setInputName("");
@@ -74,6 +75,23 @@ function App() {
           </FormControl>
         </form>
       </Container>
+      { people && 
+        people.map(({ _id, name }) => (
+          <Card>
+            <CardContent className="card-content" style={{ padding: "16px" }}>
+              <Typography
+                variant="h5"
+                component="h2"
+              >
+                <Grid conatiner alignItems="center" justify="flex-start">
+                  <Grid item style={{ flex: 2 }}>
+                    <Typography variant="h4">{name}</Typography>
+                  </Grid>
+                </Grid>
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
     </div>
   );
 }
