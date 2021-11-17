@@ -76,40 +76,39 @@ function App() {
         </form>
       </Container>
       <Container>
-            <Card>
-              <CardContent className="card-content" style={{ padding: "16px" }}>
-                <Typography
-                  variant="h5"
-                  component="h2"
-                >
-                  <Grid conatiner alignItems="center" justify="flex-start">
-                    <Grid item style={{ flex: 2 }}>
-                      <Typography variant="h4">Hola</Typography>
-                    </Grid>
+        <Card>
+          <CardContent className="card-content" style={{ padding: "16px" }}>
+            <Typography
+              variant="h5"
+              component="h2"
+            >
+              <Grid conatiner alignItems="center" justify="flex-start">
+                <Grid item style={{ flex: 2 }}>
+                  <Typography variant="h4">Hola</Typography>
+                </Grid>
+              </Grid>
+            </Typography>
+          </CardContent>
+        </Card>
+      </Container>
+      <Container>
+        {people.map(({ _id, name }) => (
+          <Card>
+            <CardContent className="card-content" style={{ padding: "16px" }}>
+              <Typography
+                variant="h5"
+                component="h2"
+              >
+                <Grid conatiner alignItems="center" justify="flex-start">
+                  <Grid item style={{ flex: 2 }}>
+                    <Typography variant="h4">{name}</Typography>
                   </Grid>
-                </Typography>
-              </CardContent>
-            </Card>
-          </Container>
-      {people &&
-        people.map(({ _id, name }) => (
-          <Container>
-            <Card>
-              <CardContent className="card-content" style={{ padding: "16px" }}>
-                <Typography
-                  variant="h5"
-                  component="h2"
-                >
-                  <Grid conatiner alignItems="center" justify="flex-start">
-                    <Grid item style={{ flex: 2 }}>
-                      <Typography variant="h4">{name}</Typography>
-                    </Grid>
-                  </Grid>
-                </Typography>
-              </CardContent>
-            </Card>
-          </Container>
+                </Grid>
+              </Typography>
+            </CardContent>
+          </Card>
         ))
+        </Container>
       }
     </div >
   );
