@@ -61,9 +61,17 @@ var PersonController = {
     getAllPeople: async (req, res) => {
         try{
             const people = await Person.find();
-            res.status(200).json(people);
+            return res.json({
+                status: "success",
+                data: people,
+                message: "People list obtained"
+            })
         }catch(err){
-            return res.status(400).json(err.details != null ? err.details[0].message : err);
+            return res.json({
+                status: "error",
+                data: null,
+                message: err
+            });
         }
     }
 }
