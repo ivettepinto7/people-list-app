@@ -108,8 +108,8 @@ function App() {
             </CardContent>
           </Card>
         ))
-        </Container>
       }
+      </Container>
     </div >
   );
 }
