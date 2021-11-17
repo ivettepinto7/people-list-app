@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FormControl, Container, Button, TextField } from "@material-ui/core";
 import { Add } from '@material-ui/icons';
+
 function App() {
   const [inputName, setInputName] = useState("");
   const [people, setPeople] = useState([]);
   
   const fetchPeople = async () => {
-    const url = `${process.env.REACT_APP_API_URL}/`;
+    const url = `${process.env.REACT_APP_API_URL}/people/get`;
 
     try {
       const res = await fetch(url);
@@ -27,7 +28,7 @@ function App() {
   };
 
   const onNameSubmit = async () => {
-    const url = `${process.env.REACT_APP_API_URL}/`;
+    const url = `${process.env.REACT_APP_API_URL}/people/create`;
     const conf = {
       method: "POST",
       headers: {

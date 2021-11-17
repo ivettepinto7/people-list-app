@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use('/', peopleRoutes);
+app.use('/people', peopleRoutes);
 
 mongoose.connect('mongodb://carolina:Z2dscAy2fpzjcBaH@localhost:27017/people-list?authSource=admin',{
     useNewUrlParser: true
