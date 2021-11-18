@@ -31,11 +31,10 @@ export default function App() {
 
     try {
       const res = await fetch(url);
-      const obj = await res.json();
-      const results = obj.data;
-      console.log(results);
+      const data = await res.json();
+      console.log(data.data);
 
-      setPeople(results);
+      setPeople(data.data);
     } catch (err) {
       console.error(err);
     }
@@ -65,10 +64,9 @@ export default function App() {
 
     try {
       const res = await fetch(url, conf);
-      const obj = await res.json();
-      console.log(obj);
+      console.log(res);
 
-      if (obj.status === "success") {
+      if (res.status === 201) {
         await fetchPeople();
         setInputName("");
       }
@@ -84,15 +82,14 @@ export default function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ newName: editName }),
+      body: JSON.stringify({ name: editName }),
     };
 
     try {
       const res = await fetch(url, conf);
-      const obj = await res.json();
-      console.log(obj);
+      console.log(res);
 
-      if (obj.status === "success") {
+      if (res.status === 200) {
         await fetchPeople();
         setEditName("");
         setOpen(false);
@@ -113,10 +110,9 @@ export default function App() {
 
     try {
       const res = await fetch(url, conf);
-      const obj = await res.json();
-      console.log(obj);
+      console.log(res);
 
-      if (obj.status === "success") {
+      if (res.status === 200) {
         await fetchPeople();
       }
     } catch (err) {
