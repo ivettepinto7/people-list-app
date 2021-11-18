@@ -9,7 +9,7 @@ var PersonController = {
             
             await person.save();
 
-            return res.(201).json({
+            return res.status(201).json({
                 data: person,
                 message: "Person added"});
         } catch (err) {
