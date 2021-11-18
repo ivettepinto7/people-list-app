@@ -84,6 +84,7 @@ export default function App() {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({ newPerson: editName }),
     };
 
     try {
@@ -94,7 +95,6 @@ export default function App() {
       if (obj.status === "success") {
         await fetchPeople();
         setEditName("");
-        setOpen(false);
       }
     } catch (err) {
       console.error(err);
