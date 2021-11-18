@@ -93,11 +93,12 @@ export default function App() {
 
       if (obj.status === "success") {
         await fetchPeople();
+        setEditName("");
+        setOpen(false);
       }
     } catch (err) {
       console.error(err);
     }
-    setOpen(false);
   };
 
   const onPersonDelete = async (id) => {
