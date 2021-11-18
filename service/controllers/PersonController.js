@@ -28,7 +28,7 @@ var PersonController = {
                 name: req.body.name
             }
 
-            await Person.findByIdAndUpdate({req.params.id},actualPerson);
+            await Person.findByIdAndUpdate(req.params.id,actualPerson);
             
             return res.status(200).json({
                 data: actualPerson,
