@@ -24,10 +24,11 @@ var PersonController = {
     },
     updatePerson: async (req, res) => {
         try {
-            var {name} = req.body;
-            const newPerson = {name};
-            
-            await Person.findByIdAndUpdate(req.params.id, newPerson);
+            var actualPerson = await Person.findOne(req.params.id);
+            actualPerson = {
+                name: req.body.newName
+            }
+            await Person.findOneAndUpdate(req.params.id,actualPerson);
             return res.json({
                 status: "success",
                 data: newPerson,
